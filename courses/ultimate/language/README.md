@@ -1,4 +1,4 @@
-## Hardcore Go - Language
+## Ultimate Go - Language
 This is a class for any intermediate-level developer who has some experience with other programming languages and wants to learn Go. This class provides an intensive, comprehensive and idiomatic view of the language. We focus on both the specification and implementation of the language, including topics ranging from language syntax, Go's type system, concurrency, channels, standard library and tooling.
 
 *Note: This material has been designed to be taught in a classroom environment. The code is well commented but missing some of the contextual concepts and ideas that will be covered in class.*
@@ -21,8 +21,8 @@ This is a class for any intermediate-level developer who has some experience wit
 [Interfaces](../../../topics/interfaces/README.md) | 
 [Embedding](../../../topics/embedding/README.md)
 
-#### Exporting
-[Exporting](../../../topics/exporting/README.md)
+#### Packaging / Exporting
+[Packaging/Exporting](../../../topics/exporting/README.md)
 
 #### Nature of Types
 [Receiver Choices](../../../topics/receiver_choices/README.md)

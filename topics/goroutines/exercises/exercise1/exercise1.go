@@ -1,9 +1,9 @@
 // All material is licensed under the Apache License Version 2.0, January 2004
 // http://www.apache.org/licenses/LICENSE-2.0
 
-// https://play.golang.org/p/pzIjQhIJ5J
+// https://play.golang.org/p/Ci3j0V_lLV
 
-// Create a program that declares two anonymous functions. Once that counts up to
+// Create a program that declares two anonymous functions. One that counts up to
 // 100 from 0 and one that counts down to 0 from 100. Display each number with an
 // unique identifier for each goroutine. Then create goroutines from these functions
 // and don't let main return until the goroutines complete.
@@ -23,10 +23,9 @@ func init() {
 	runtime.GOMAXPROCS(1)
 }
 
-// main is the entry point for all Go programs.
+// main is the entry point for the application.
 func main() {
-	// wg is used to wait for the program to finish.
-	// Add a count of two, one for each goroutine.
+	// Declare a wait group and set the count to two.
 	var wg sync.WaitGroup
 	wg.Add(2)
 

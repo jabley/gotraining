@@ -1,10 +1,10 @@
-## Hardcore Go
+## Ultimate Go
 This is 5 days of material for any intermediate-level developer who has some experience with other programming languages and wants to learn Go. We believe these classes are perfect for anyone who wants a jump start in learning Go or who wants a more thorough understanding of the language and its internals.
 
 *Note: This material has been designed to be taught in a classroom environment. The code is well commented but missing some of the contextual concepts and ideas that will be covered in class.*
 
 ## Language
-This material covers all the langauge syntax, idioms, implementation and specification of the language. Once you are done with this material you will understand the mechanics of the language and mechanical sympathies the language has for both the hardware and operating system. 
+This material covers all the language syntax, idioms, implementation and specification of the language. Once you are done with this material you will understand the mechanics of the language and mechanical sympathies the language has for both the hardware and operating system. 
 
 [Language](language/README.md)
 

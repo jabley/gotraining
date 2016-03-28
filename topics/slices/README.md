@@ -13,6 +13,8 @@ Slices are an incredibly important data structure in Go. They form the basis for
 
 http://blog.golang.org/go-slices-usage-and-internals
 
+https://blog.golang.org/strings
+
 http://blog.golang.org/slices
 
 http://www.goinggo.net/2013/08/understanding-slices-in-go-programming.html
@@ -33,9 +35,9 @@ http://www.goinggo.net/2013/12/three-index-slices-in-go-12.html
 
 [Appending slices](example4/example4.go) ([Go Playground](https://play.golang.org/p/IHKg8PuSj4))
 
-[Taking slices of slices](example3/example3.go) ([Go Playground](http://play.golang.org/p/AFb1SZ_1WZ))
+[Taking slices of slices](example3/example3.go) ([Go Playground](http://play.golang.org/p/etCPO64mWh))
 
-[Strings and slices](example5/example5.go) ([Go Playground](https://play.golang.org/p/W3c_iWsvqj))
+[Strings and slices](example5/example5.go) ([Go Playground](https://play.golang.org/p/0WWW4Lwok4))
 
 [Variadic functions](example6/example6.go) ([Go Playground](http://play.golang.org/p/5uDVuormwB))
 
@@ -43,7 +45,7 @@ http://www.goinggo.net/2013/12/three-index-slices-in-go-12.html
 
 [Three index slicing](advanced/example1/example1.go) ([Go Playground](http://play.golang.org/p/TepZptJati))
 
-## Exercies
+## Exercises
 
 ### Exercise 1
 
@@ -51,7 +53,7 @@ http://www.goinggo.net/2013/12/three-index-slices-in-go-12.html
 
 **Part B** Declare a slice of five strings and initialize the slice with string literal values. Display all the elements. Take a slice of index one and two and display the index position and value of each element in the new slice.
 
-[Template](exercises/template1/template1.go) ([Go Playground](http://play.golang.org/p/mPKmyGNR2L)) | 
-[Answer](exercises/exercise1/exercise1.go) ([Go Playground](http://play.golang.org/p/BSNAUj2pd-))
+[Template](exercises/template1/template1.go) ([Go Playground](https://play.golang.org/p/4fez2elO_f)) | 
+[Answer](exercises/exercise1/exercise1.go) ([Go Playground](https://play.golang.org/p/HaCD5pxCMZ))
 ___
 All material is licensed under the [Apache License Version 2.0, January 2004](http://www.apache.org/licenses/LICENSE-2.0).

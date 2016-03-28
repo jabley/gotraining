@@ -1,7 +1,7 @@
 // All material is licensed under the Apache License Version 2.0, January 2004
 // http://www.apache.org/licenses/LICENSE-2.0
 
-// https://play.golang.org/p/IwFKbnb1JO
+// https://play.golang.org/p/_BpVuJ2jga
 
 // go build -race
 
@@ -18,17 +18,22 @@ import (
 // counter is a variable incremented by all goroutines.
 var counter int
 
-// wg is used to wait for the program to finish.
-var wg sync.WaitGroup
-
-// main is the entry point for all Go programs.
+// main is the entry point for the application.
 func main() {
-	// Add a count of two, one for each goroutine.
-	wg.Add(2)
+	// Number of goroutines to use.
+	const grs = 2
+
+	// wg is used to manage concurrency.
+	var wg sync.WaitGroup
+	wg.Add(grs)
 
 	// Create two goroutines.
-	go incCounter()
-	go incCounter()
+	for i := 0; i < grs; i++ {
+		go func() {
+			incCounter()
+			wg.Done()
+		}()
+	}
 
 	// Wait for the goroutines to finish.
 	wg.Wait()
@@ -51,29 +56,30 @@ func incCounter() {
 		// Store the value back into Counter.
 		counter = value
 	}
-
-	// Tell main we are done.
-	wg.Done()
 }
 
 /*
 ==================
 WARNING: DATA RACE
-Write by goroutine 6:
+Write by goroutine 7:
   main.incCounter()
-      /Users/bill/.../example1/example1.go:52 +0x6f
+      /Users/bill/.../data_race/example1/example1.go:57 +0x6f
+  main.main.func1()
+      /Users/bill/.../data_race/example1/example1.go:33 +0x25
 
-Previous read by goroutine 7:
+Previous read by goroutine 6:
   main.incCounter()
-      /Users/bill/.../example1/example1.go:42 +0x41
-
-Goroutine 6 (running) created at:
-  main.main()
-      /Users/bill/.../example1/example1.go:30 +0x69
+      /Users/bill/.../data_race/example1/example1.go:47 +0x41
+  main.main.func1()
+      /Users/bill/.../data_race/example1/example1.go:33 +0x25
 
 Goroutine 7 (running) created at:
   main.main()
-      /Users/bill/.../example1/example1.go:31 +0x8a
+      /Users/bill/.../data_race/example1/example1.go:35 +0xa1
+
+Goroutine 6 (running) created at:
+  main.main()
+      /Users/bill/.../data_race/example1/example1.go:35 +0xa1
 ==================
 Final Counter: 2
 Found 1 data race(s)

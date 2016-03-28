@@ -1,11 +1,10 @@
 // All material is licensed under the Apache License Version 2.0, January 2004
 // http://www.apache.org/licenses/LICENSE-2.0
 
-// http://play.golang.org/p/BSNAUj2pd-
+// https://play.golang.org/p/HaCD5pxCMZ
 
-// Declare a nil slice of integers. Declare a nil slice of integers. Create a
-// loop that appends 10 values to the slice. Iterate over the slice and display
-// each value. Iterate over the slice and display each value.
+// Declare a nil slice of integers. Create a loop that appends 10 values to the
+// slice. Iterate over the slice and display each value.
 //
 // Declare a slice of five strings and initialize the slice with string literal
 // values. Display all the elements. Take a slice of index one and two
@@ -20,7 +19,7 @@ func main() {
 	var numbers []int
 
 	// Append numbers to the slice.
-	for i := 0; i < 5; i++ {
+	for i := 0; i < 10; i++ {
 		numbers = append(numbers, i*10)
 	}
 
@@ -30,7 +29,7 @@ func main() {
 	}
 
 	// Declare a slice of strings.
-	names := []string{"Bill", "Lisa", "Jim", "Cathy"}
+	names := []string{"Bill", "Lisa", "Jim", "Cathy", "Beth"}
 
 	// Display each index position and name.
 	for i, name := range names {

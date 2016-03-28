@@ -1,12 +1,14 @@
-## Composition
+## Interface and Composition Design
 
-Composition goes beyond the mechanics of type embedding. It's a design pattern we can leverage in Go to build larger programs from smaller parts. These smaller parts come from the declaration and implementation of types that have a single focus. Programs that are architected with composition in mind have a better chance to grow and adapt to changes.
+Composition goes beyond the mechanics of type embedding and is more than just a paradigm. It is the key for maintaining stability in your software by having the ability to adapt to the data and transformation changes that are coming.
 
 ## Notes
 
-* Declare types and behavior with composition in mind.
-* Composition is like building software with lego blocks.
 * This is much more than the mechanics of type embedding.
+* Declare types and implement workflows with composition in mind.
+* Understand the problem you are trying to solve first. This means understanding the data.
+* The goal is to reduce and minimize cascading changes across your software.
+* Interfaces provide the highest form composition.
 
 ## Links
 
@@ -14,13 +16,23 @@ http://golang.org/doc/effective_go.html#embedding
 
 http://www.goinggo.net/2015/09/composition-with-go.html
 
+## Design Guidelines
+
+* Learn about the [design guidelines](../../reading/design_guidelines.md) for composition.
+
 ## Code Review
 
-[Composition I](example1/example1.go) ([Go Playground](https://play.golang.org/p/2BVYbX8Hyz))
+[Struct Composition](example1/example1.go) ([Go Playground](https://play.golang.org/p/wipPTC9se1))
 
-[Composition II](example2/example2.go) ([Go Playground](http://play.golang.org/p/QnkL-UIVJN))
+[Decoupling With Interface](example2/example2.go) ([Go Playground](https://play.golang.org/p/Kh8JCDxdjY))
 
-[Interface Conversions](example3/example3.go) ([Go Playground](https://play.golang.org/p/wSC0U_qXWa))
+[Interface Composition](example3/example3.go) ([Go Playground](https://play.golang.org/p/wUtZ7gxLIL))
+
+[Decoupling With Interface Composition](example4/example4.go) ([Go Playground](https://play.golang.org/p/uB4c33sbfj))
+
+[Interface Conversions](example5/example5.go) ([Go Playground](http://play.golang.org/p/W8_QflbEFz))
+
+[Runtime Type Assertions](example6/example6.go) ([Go Playground](http://play.golang.org/p/2kfVP_SGA4))
 
 ## Exercises
 

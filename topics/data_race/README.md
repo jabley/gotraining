@@ -8,12 +8,22 @@ A data race is when two or more goroutines attempt to read and write to the same
 * When two or more goroutines attempt to access the same resource, we have a data race.
 * Atomic functions and mutexes can provide the support we need.
 
-## False Sharing and Cache Coherency
+## Cache Coherency and False Sharing
 This content is provided by Scott Meyers from his talk in 2014 at Dive:
 
-[CPU Caches and Why You Care (30:09-35:40)](https://youtu.be/WDIkqP4JbkE?t=1809)
+[CPU Caches and Why You Care (30:09-38:30)](https://youtu.be/WDIkqP4JbkE?t=1809)
+
+![figure1](figure1.png)
+
+## Cache Coherency and False Sharing Notes
+
+* Thread memory access matters.
+
+* If your algorithm is not scaling look for false sharing problems.
 
 ## Links
+
+[The Go Memory Model](https://golang.org/ref/mem)
 
 http://blog.golang.org/race-detector
 
@@ -29,24 +39,28 @@ https://golang.org/doc/articles/race_detector.html
 
 ## Code Review
 
-[Data Race](example1/example1.go) ([Go Playground](https://play.golang.org/p/IwFKbnb1JO))
+[Data Race](example1/example1.go) ([Go Playground](https://play.golang.org/p/_BpVuJ2jga))
 
-[Atomic Increments](example2/example2.go) ([Go Playground](https://play.golang.org/p/1Wlq7FDgHd))
+[Atomic Increments](example2/example2.go) ([Go Playground](https://play.golang.org/p/2Zeq3INrv4))
 
-[Atomic Store/Load](example3/example3.go) ([Go Playground](https://play.golang.org/p/blXRQXlH8Z))
+[Atomic Store/Load](example3/example3.go) ([Go Playground](https://play.golang.org/p/BjzenGHmuN))
 
-[Mutex](example4/example4.go) ([Go Playground](https://play.golang.org/p/E7Gj_pSpqf))
+[Mutex](example4/example4.go) ([Go Playground](https://play.golang.org/p/FLTlW0aqWT))
 
-[Read/Write Mutex](example5/example5.go) ([Go Playground](https://play.golang.org/p/0_T7S2w2qp))
+[Read/Write Mutex](example5/example5.go) ([Go Playground](https://play.golang.org/p/k6nGJWXo7e))
+
+## Advanced Code Review
+
+[Interface Based Race Condition](advanced/example1/example1.go) ([Go Playground](https://play.golang.org/p/5VSYQPm0Ov))
 
 ## Exercises
 
 ### Exercise 1
 Given the following program, use the race detector to find and correct the data race.
 
-	// https://play.golang.org/p/0C-mUZGUhE
+	// https://play.golang.org/p/F5DCJTZ6Lm
 
-	// Program for an exercise to fix a race condition.
+	// Fix the race condition in this program.
 	package main
 
 	import (
@@ -59,23 +73,27 @@ Given the following program, use the race detector to find and correct the data 
 	// numbers maintains a set of random numbers.
 	var numbers []int
 
-	// wg is used to wait for the program to finish.
-	var wg sync.WaitGroup
-
 	// init is called prior to main.
 	func init() {
 		rand.Seed(time.Now().UnixNano())
 	}
 
-	// main is the entry point for all Go programs.
+	// main is the entry point for the application.
 	func main() {
-		// Add a count for each goroutine we will create.
-		wg.Add(3)
+		// Number of goroutines to use.
+		const grs = 3
+
+		// wg is used to manage concurrency.
+		var wg sync.WaitGroup
+		wg.Add(grs)
 
 		// Create three goroutines to generate random numbers.
-		go random(10)
-		go random(10)
-		go random(10)
+		for i := 0; i < grs; i++ {
+			go func() {
+				random(10)
+				wg.Done()
+			}()
+		}
 
 		// Wait for all the goroutines to finish.
 		wg.Wait()
@@ -93,12 +111,9 @@ Given the following program, use the race detector to find and correct the data 
 			n := rand.Intn(100)
 			numbers = append(numbers, n)
 		}
-
-		// Tell main we are done.
-	    wg.Done()
 	}
 
-[Template](exercises/template1/template1.go) ([Go Playground](https://play.golang.org/p/yBFA-MDcMw)) | 
-[Answer](exercises/exercise1/exercise1.go) ([Go Playground](https://play.golang.org/p/wFTNvVoBpz))
+[Template](exercises/template1/template1.go) ([Go Playground](https://play.golang.org/p/F5DCJTZ6Lm)) | 
+[Answer](exercises/exercise1/exercise1.go) ([Go Playground](https://play.golang.org/p/VCFI9VpNNw))
 ___
 All material is licensed under the [Apache License Version 2.0, January 2004](http://www.apache.org/licenses/LICENSE-2.0).

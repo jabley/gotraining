@@ -1,7 +1,7 @@
 // All material is licensed under the Apache License Version 2.0, January 2004
 // http://www.apache.org/licenses/LICENSE-2.0
 
-// https://play.golang.org/p/blXRQXlH8Z
+// https://play.golang.org/p/BjzenGHmuN
 
 // go build -race
 
@@ -19,17 +19,22 @@ import (
 // shutdown is a flag to alert running goroutines to shutdown.
 var shutdown int64
 
-// wg is used to wait for the program to finish.
-var wg sync.WaitGroup
-
-// main is the entry point for all Go programs.
+// main is the entry point for the application.
 func main() {
-	// Add a count of two, one for each goroutine.
-	wg.Add(2)
+	// Number of goroutines to use.
+	const grs = 2
+
+	// wg is used to manage concurrency.
+	var wg sync.WaitGroup
+	wg.Add(grs)
 
 	// Create two goroutines.
-	go doWork("A")
-	go doWork("B")
+	for i := 0; i < grs; i++ {
+		go func(i int) {
+			doWork(i)
+			wg.Done()
+		}(i)
+	}
 
 	// Give the goroutines time to run so we can see
 	// the shutdown flag work.
@@ -45,18 +50,15 @@ func main() {
 
 // doWork simulates a goroutine performing work and
 // checking the Shutdown flag to terminate early.
-func doWork(name string) {
+func doWork(id int) {
 	for {
-		fmt.Printf("Doing %s Work\n", name)
+		fmt.Printf("Doing %d Work\n", id)
 		time.Sleep(250 * time.Millisecond)
 
 		// Do we need to shutdown.
 		if atomic.LoadInt64(&shutdown) == 1 {
-			fmt.Printf("Shutting %s Down\n", name)
+			fmt.Printf("Shutting %d Down\n", id)
 			break
 		}
 	}
-
-	// Tell main we are done.
-	wg.Done()
 }

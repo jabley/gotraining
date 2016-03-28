@@ -1,7 +1,7 @@
 // All material is licensed under the Apache License Version 2.0, January 2004
 // http://www.apache.org/licenses/LICENSE-2.0
 
-// http://play.golang.org/p/AFb1SZ_1WZ
+// http://play.golang.org/p/etCPO64mWh
 
 // Sample program to show how to takes slices of slices to create different
 // views of and make changes to the underlying array.
@@ -22,7 +22,7 @@ func main() {
 	inspectSlice(slice1)
 
 	// Take a slice of slice1. We want just indexes 2 and 3.
-	// Parameters are [starting_index : (starting_index + length)
+	// Parameters are [starting_index : (starting_index + length)]
 	slice2 := slice1[2:4]
 	inspectSlice(slice2)
 

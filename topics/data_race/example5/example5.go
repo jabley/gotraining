@@ -1,7 +1,7 @@
 // All material is licensed under the Apache License Version 2.0, January 2004
 // http://www.apache.org/licenses/LICENSE-2.0
 
-// https://play.golang.org/p/0_T7S2w2qp
+// https://play.golang.org/p/k6nGJWXo7e
 
 // go build -race
 
@@ -21,28 +21,33 @@ import (
 // data is a slice that will be shared.
 var data []string
 
-// wg is used to wait for the program to finish.
-var wg sync.WaitGroup
-
 // rwMutex is used to define a critical section of code.
 var rwMutex sync.RWMutex
 
 // Number of reads occurring at ay given time.
 var readCount int64
 
-// init is called before main is executed.
+// init is called prior to main.
 func init() {
 	runtime.GOMAXPROCS(runtime.NumCPU())
 	rand.Seed(time.Now().UnixNano())
 }
 
-// main is the entry point for all Go programs.
+// main is the entry point for the application.
 func main() {
-	// Add the one goroutines for the writer.
+	// wg is used to manage concurrency.
+	var wg sync.WaitGroup
 	wg.Add(1)
 
 	// Create the writer goroutine.
-	go writer()
+	go func() {
+		writer()
+		wg.Done()
+	}()
+
+	// To keep the sample simple we are allowing the runtime to
+	// kill the reader goroutines. This is something we should
+	// control before allowing main to exit.
 
 	// Create seven reader goroutines.
 	for i := 1; i <= 7; i++ {
@@ -52,10 +57,6 @@ func main() {
 	// Wait for the write goroutine to finish.
 	wg.Wait()
 	fmt.Println("Program Complete")
-
-	// To keep the sample simple we are allowing the runtime to
-	// kill the reader goroutines. This is something we should
-	// control before allowing main to exit.
 }
 
 // writer adds 10 new strings to the slice in random intervals.
@@ -80,9 +81,6 @@ func writer() {
 		// Sleep a random amount of time.
 		time.Sleep(time.Duration(rand.Intn(100)) * time.Millisecond)
 	}
-
-	// Tell main we are done.
-	wg.Done()
 }
 
 // reader wakes up and iterates over the data slice.

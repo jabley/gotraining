@@ -1,7 +1,7 @@
 // All material is licensed under the Apache License Version 2.0, January 2004
 // http://www.apache.org/licenses/LICENSE-2.0
 
-// http://play.golang.org/p/G7O-DnJrEA
+// https://play.golang.org/p/0ip9DM7rgx
 
 // Write a program where two goroutines pass an integer back and forth
 // ten times. Display when each goroutine receives the integer. Increment
@@ -13,43 +13,31 @@ package main
 
 // Declare a wait group variable.
 
-// Declare a function for the goroutine. Pass in a name for the
-// routine and a channel of type int used to share the value back and forth.
-func goroutine( /* parameters */ ) {
-	for {
-		// Receive on the channel, waiting for the integer.
+// main is the entry point for the application.
+func main() {
+	// Create an unbuffered channel.
 
-		// Check if the channel is closed.
-		{
-			// Call done on the waitgroup.
-			// Display the goroutine is finished and return.
-		}
+	// Set the waitgroup, one for each goroutine.
 
-		// Display the integer value received.
+	// Launch the goroutine and handle Done.
 
-		// Check is the value from the channel is 10.
-		{
-			// Close the channel.
-			// Call done on the waitgroup.
-			// Display the goroutine is finished and return.
-		}
+	// Launch the goroutine and handle Done.
 
-		// Increment the value by one and send in back through
-		// the channel.
-	}
+	// Send a value to start the counting.
+
+	// Wait for the program to finish.
 }
 
-// main is the entry point for all Go programs.
-func main() {
-	// Declare and initialize an unbuffered channel
-	// of type int.
+// goroutine simulates sharing a value.
+func goroutine( /* parameters */ ) {
+	for {
+		// Wait for the value to be sent.
+		// If the channel was closed, shutdown.
 
-	// Increment the wait group for each goroutine
-	// to be created.
+		// Display the value.
 
-	// Create the two goroutines.
+		// Terminate when the value is 10.
 
-	// Send the initial integer value into the channel.
-
-	// Wait for all the goroutines to finish.
+		// Share the value.
+	}
 }

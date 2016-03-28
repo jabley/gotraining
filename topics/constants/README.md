@@ -1,6 +1,6 @@
 ## Constants
 
-Constants are a way to create a named identifier who's value can never change. They also provide an incredible amount of flexibility to the language. The way constants are implemented in Go is very unique.
+Constants are a way to create a named identifier whose value can never change. They also provide an incredible amount of flexibility to the language. The way constants are implemented in Go is very unique.
 
 ## Notes
 
@@ -19,7 +19,7 @@ http://www.goinggo.net/2014/04/introduction-to-numeric-constants-in-go.html
 
 ## Code Review
 
-[Declare and inialize constants](example1/example1.go) ([Go Playground](http://play.golang.org/p/0Z2qjifGld))
+[Declare and inialize constants](example1/example1.go) ([Go Playground](http://play.golang.org/p/Remt-HvD2D))
 
 [Parallel type system (Kind)](example2/example2.go) ([Go Playground](http://play.golang.org/p/ExxRWe6jUz))
 

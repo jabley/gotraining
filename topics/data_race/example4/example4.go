@@ -1,7 +1,7 @@
 // All material is licensed under the Apache License Version 2.0, January 2004
 // http://www.apache.org/licenses/LICENSE-2.0
 
-// https://play.golang.org/p/E7Gj_pSpqf
+// https://play.golang.org/p/FLTlW0aqWT
 
 // go build -race
 
@@ -18,20 +18,25 @@ import (
 // counter is a variable incremented by all goroutines.
 var counter int
 
-// wg is used to wait for the program to finish.
-var wg sync.WaitGroup
-
 // mutex is used to define a critical section of code.
 var mutex sync.Mutex
 
-// main is the entry point for all Go programs.
+// main is the entry point for the application.
 func main() {
-	// Add a count of two, one for each goroutine.
-	wg.Add(2)
+	// Number of goroutines to use.
+	const grs = 2
+
+	// wg is used to manage concurrency.
+	var wg sync.WaitGroup
+	wg.Add(grs)
 
 	// Create two goroutines.
-	go incCounter()
-	go incCounter()
+	for i := 0; i < grs; i++ {
+		go func() {
+			incCounter()
+			wg.Done()
+		}()
+	}
 
 	// Wait for the goroutines to finish.
 	wg.Wait()
@@ -62,7 +67,4 @@ func incCounter() {
 		// Release the lock and allow any
 		// waiting goroutine through.
 	}
-
-	// Tell main we are done.
-	wg.Done()
 }

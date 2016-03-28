@@ -4,6 +4,8 @@
 
 Go is an open source programming language that makes it easy to build simple, reliable, and efficient software. Although it borrows ideas from existing languages, it has a unique and simple nature that make Go programs different in character from programs written in other languages. It balances the capabilities of a low-level systems language with some high-level features you see in modern languages today. This creates a programming environment that allows you to be incredibly productive, performant and fully in control; in Go, you can write less code and do so much more.
 
+[Learn More](https://talks.golang.org/2012/splash.article)
+
 ## Minimal Qualified Student
 
 The material has been designed to be taught in a classroom environment. The code is well commented but missing some of the contextual concepts and ideas that will be covered in class. Students with the following minimal background will get the most out of the class.
@@ -16,24 +18,87 @@ The material has been designed to be taught in a classroom environment. The code
 	* Has worked with a command shell.
 	* Knows how to maneuver around the file system.
 	* Understands what environment variables are.
+	
+## Course Outline
+
+* Language Syntax
+* Arrays, Slices and Maps
+* Methods, Interfaces and Embedding
+* Packaging and Exporting
+* Using Pointers
+* Error Handling
+* Concurrency, Race Conditions and Channels
+* Concurrency Patterns
+* Testing and Debugging
+* Project Structure and Vendoring
+* Standard Library
+
+## Important Reading
+
+Please check out this page of [important reading](reading/README.md). You will find articles and videos around mechnical sympathy, data-oriented design, Go runtime and optimizations and articles about the history of computing.
+
+## Our Experience
+
+We have taught this class to thousands of students for almost two years.
+
+We have trained companies such as:
+
+Comcast, Rackspace, The New York Times, Yik Yak, Fidelity, GE, CISCO, The Economist, Teradata and more.
+
+We have taught all around the world:
+
+US, Canada, Mexico, England, Amsterdam and India
 
 ## Before You Come To Class
 
-**Install Go On Mac OS X:**  
+### Installing Go
+
+**Mac OS X**  
 http://www.goinggo.net/2013/06/installing-go-gocode-gdb-and-liteide.html
 
-**Install Go On Windows:**  
+**Windows**  
 http://www.wadewegner.com/2014/12/easy-go-programming-setup-for-windows/
 
-**Starter Material:**  
-[Quick Tour](courses/quick_tour)
+**Linux**  
+I do not recommend using `apt-get`. Go is easy to install. Just download the
+archive and extract it into /usr/local, creating a Go tree in /usr/local/go.
 
-**Learn More:**  
+https://golang.org/doc/install
+
+### Editors
+
+**Visual Studio Code**  
+https://code.visualstudio.com/Updates  
+https://github.com/microsoft/vscode-go
+
+**Sublime**  
+http://www.sublimetext.com/  
+https://github.com/DisposaBoy/GoSublime  
+http://www.wolfe.id.au/2015/03/05/using-sublime-text-for-go-development/
+
+**VIM**  
+http://www.vim.org/download.php  
+http://farazdagi.com/blog/2015/vim-as-golang-ide/
+
+**Atom**  
+https://atom.io/  
+https://github.com/joefitzgerald/go-plus
+
+**LiteIDE**  
+http://sourceforge.net/projects/liteide/files/
+
+**Emacs**  
+https://github.com/creack/dotfiles
+
+## Starter Material
+  
+[Quick Tour](courses/quick_tour)
+  
 http://golang.org/  
 https://tour.golang.org/welcome/1  
 http://www.goinggo.net/
 
-## Go Get The Material
+## Go Get The Training Material
 
     go get github.com/ardanlabs/gotraining
 
@@ -52,9 +117,32 @@ _Kevin is an experienced software engineer that has been enthusiastically using 
 **Cory LaNou** ([@corylanou](https://twitter.com/corylanou))  
 _Cory LaNou is a full stack web developer and entrepreneur with over 17 years of experience. After 11 years of being a successful serial entrepreneur, he has joined the InfluxDB team, working on building an open source time series database, written in Go. He is active in the Go community, leading the Denver Gophers meetup, as well as mentoring students in his free time._
 
+## Twitter
+
+Jessie Frazelle ([@frazelledazzell](https://twitter.com/frazelledazzell/status/711355859066990592))  
+_"@goinggodotnet you were amazing!!! So enthusiastic!!! Thanks for doing this for everyone!"_
+
+Kelsey Hightower ([‏@kelseyhightower](https://twitter.com/kelseyhightower/status/673359937909592064))  
+_"Day 1 of the [Ultimate] Go workshop was outstanding! Big shoutout to @intel, @golangbridge, and @goinggodotnet for bringing this to Portland."_
+
+Katrina Owen ([@kytrinyx](https://twitter.com/kytrinyx/status/673360428278222848))  
+_"OH: "You thought you knew Go..." (You do Go? You want to do Go?) You should take this workshop. Seriously.) "_
+
+Matt Oswalt ([@Mierdin](https://twitter.com/mierdin/status/673570058392616961))  
+_"Should be mentioned that though I am no expert, I have been using Go for about a year - and this meetup is kicking my ass."_
+
 ## Testimonials
 
-Shalab Goel, Ph.D.
+Susan Dady, Software Engineer - GE Digital
+_"Rarely will you come across a course as worthwhile as this one. I learned many things relevant and useful in my daily work and William's energy kept me engaged. I came back to work excited to get coding in Go."_
+
+Paul Garvey, Software Engineer - GE Digital
+_"Looking back I am grateful I took the GoLang training course. I had planned to just buy a few books and learned it on my own. In retrospect that would have been a bad decision as I would missed out on all the pitfalls, best practices, practical exercises and discussions the instructor imparted from his years of experience in the field, writing a book and blogging with other gophers. In the end I felt I learn more in 3 days then I could reading books and learning GoLang on my own and all my colleagues who took the course all share this view. We also share the view that Bill the instructor brought an enthusiasm and energy to the course that made a really technical course easy to learn. I would recommend anyone who want to learn Go to sign up with Mr Kennedy. At the end of the course you will feel like you are ready to rewrite all your old apps in Go :-)"_
+
+Richard Stanley, Software Engineer - GE Digital
+_"Not only does Bill deeply understands the technical details of Go, he also can explain them in an effective, enthusiastic manner that helped me retain somewhat dry material.  His passion for the language and its capabilities are obvious through out his training."_
+
+Shalab Goel, Ph.D.  
 _"It was a pleasure taking this course — learning lot of "dry" stuff in such animated and enthusiastic environment. The exercises were spot on for building what you called as "memory muscle. I have good amount of background in conventional multithreaded and distributed environments, but I have not put that knowledge to use more recently; so it was good refresher from that point of view as well. From Yuck to completely Wow-ed is how I will like to describe my respect for Go within three days. I knew nothing about GO before the course."_
 
 Geoff Clitheroe ([@gclitheroe](https://twitter.com/gclitheroe))  

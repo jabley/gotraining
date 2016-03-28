@@ -4,9 +4,13 @@ Variables are at the heart of the language and provide the ability to read from 
 
 ## Notes
 
+* The purpose of all programs and all parts of those programs it to transform data from one form to the other.
+* Code primarily allocates, reads and writes to memory.
+* Understanding type is crucial to writing good code and understanding code.
+* If you don't understand the data, you don't understand the problem.
+* You understand the problem better by understanding the data.
 * When variables are being declared to their zero value, use the keyword var.
 * When variables are being declared and initialized, use the short variable declaration operator.
-* Escape analysis is used to determine when a value escapes to the heap.
 
 ## Links
 
@@ -15,6 +19,8 @@ Variables are at the heart of the language and provide the ability to read from 
 https://golang.org/doc/effective_go.html#variables
 
 http://www.goinggo.net/2013/08/gustavos-ieee-754-brain-teaser.html
+
+[What's in a name](https://www.youtube.com/watch?v=sFUSP8Au_PE)
 
 ## Code Review
 
